@@ -34,17 +34,18 @@
                 <img class="card-img-top" src="{{url_for('static', filename='images/cat1.jpg')}}">
                 <div class="card-body">
                   <h5 class="card-title">{{cat.name}}</h5>
-                  <p class="card-text">Votes: {{vote_count}}</p>
-                  <a href="{{ url_for('cat') }}" class="btn btn-primary">View details</a>
-                  <a href="{{ url_for('add_vote') }}" class="btn btn-primary">add vote</a>
-                 
+                  <p class="card-text">Votes: {{cat.like}}</p>
+                  <form  method="post" action = "/add_vote" >
+                  <input type="hidden" name="cat_id" value="{{ cat.id }}">
+                  <button type="submit" class="btn btn-primary" > add vote</button>
+                 </form>
                 </div>
               </div>
         </div>
       </div>
       {% endfor%}
     </div>
-  <a href="{{ url_for('add_cat') }}" class="btn btn-primary">add a new cat</a>
+  <a href="/details" class="btn btn-primary">add a new cat</a>
   <!--BOOTSTRAP Javascript import-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
